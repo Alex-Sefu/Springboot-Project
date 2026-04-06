@@ -23,7 +23,6 @@ public class Utilizator {
     @Column(name = "rolul")
     private String rolul;
 
-    // CAMPUL 'activat' ESTE ELIMINAT
 
     // --- Constructor implicit ---
     public Utilizator() {
@@ -45,5 +44,4 @@ public class Utilizator {
     public String getRolul() { return rolul; }
     public void setRolul(String rolul) { this.rolul = rolul; }
 
-    // Getter/Setter pentru 'activat' sunt eliminate
 }

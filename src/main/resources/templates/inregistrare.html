@@ -51,8 +51,6 @@
 
         <form th:action="@{/inregistrare}" th:object="${utilizatorNou}" method="post">
 
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-
             <div class="mb-3">
                 <label for="nume" class="form-label">Nume Complet</label>
                 <input type="text" id="nume" th:field="*{nume}" class="form-control" placeholder="Ion Ionescu" required>

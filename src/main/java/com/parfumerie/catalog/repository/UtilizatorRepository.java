@@ -1,8 +1,6 @@
-// src/main/java/com/parfumerie/catalog/repository/UtilizatorRepository.java
-
 package com.parfumerie.catalog.repository;
 
-import com.parfumerie.catalog.entity.Utilizator; // Asigura-te ca ai importat entitatea corecta
+import com.parfumerie.catalog.entity.Utilizator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

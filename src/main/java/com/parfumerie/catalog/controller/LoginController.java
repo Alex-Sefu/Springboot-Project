@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-    // Gestionează afișarea paginii de login (URL-ul specificat în SecurityConfig)
+    // Gestioneaza afisarea paginii de login (URL-ul specificat în SecurityConfig)
     @GetMapping("/login")
     public String login() {
         // Returneaza numele template-ului Thymeleaf: login.html

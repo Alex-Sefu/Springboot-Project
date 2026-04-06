@@ -10,7 +10,6 @@ public class UtilizatorService {
 
     private final UtilizatorRepository utilizatorRepository;
 
-    // Injectarea JavaMailSender este ELIMINATĂ
 
     @Autowired
     public UtilizatorService(UtilizatorRepository utilizatorRepository) {
@@ -18,11 +17,6 @@ public class UtilizatorService {
     }
 
     public Utilizator saveUtilizator(Utilizator utilizator) {
-        // NU mai setăm 'activat=false'. Contul e activ implicit.
         return utilizatorRepository.save(utilizator);
-
-        // Trimiterea notificării către administrator este ELIMINATĂ
     }
-
-    // Metoda activeazaUtilizator este ELIMINATĂ
 }

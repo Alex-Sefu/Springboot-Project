@@ -1,9 +1,5 @@
--- STERGE tabelele daca exista si creeaza-le de la zero
-DROP TABLE IF EXISTS parfumuri;
-DROP TABLE IF EXISTS utilizatori;
-
--- Creati manual tabela utilizatori
-CREATE TABLE utilizatori (
+-- Creeaza tabelele doar daca nu exista deja, astfel incat datele existente sa fie pastrate
+CREATE TABLE IF NOT EXISTS utilizatori (
                              id_utilizator BIGINT AUTO_INCREMENT PRIMARY KEY,
                              nume VARCHAR(255) NOT NULL,
                              utilizator VARCHAR(255) UNIQUE NOT NULL,
@@ -11,8 +7,7 @@ CREATE TABLE utilizatori (
                              rolul VARCHAR(50) NOT NULL
 );
 
--- Creati manual tabela parfumuri
-CREATE TABLE parfumuri (
+CREATE TABLE IF NOT EXISTS parfumuri (
                            id_parfum BIGINT AUTO_INCREMENT PRIMARY KEY,
                            id_utilizator BIGINT,
                            nume_parfum VARCHAR(255) NOT NULL,

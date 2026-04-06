@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 // Extinde JpaSpecificationExecutor pentru a folosi interogari dinamice (Specifications)
 public interface ParfumRepository extends JpaRepository<Parfum, Long>, JpaSpecificationExecutor<Parfum> {
 
-    // Metodele personalizate de filtrare pot fi adaugate aici, dar nu sunt necesare
-    // deoarece folosim JpaSpecificationExecutor in Service.
 }

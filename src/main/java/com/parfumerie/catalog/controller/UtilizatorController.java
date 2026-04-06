@@ -21,14 +21,14 @@ public class UtilizatorController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // Metoda GET: Afișează formularul de înregistrare
+    // Metoda GET: Afișeaza formularul de înregistrare
     @GetMapping("/inregistrare")
     public String afiseazaFormularInregistrare(Model model) {
         model.addAttribute("utilizatorNou", new Utilizator());
         return "inregistrare";
     }
 
-    // Metoda POST: Procesează înregistrarea
+    // Metoda POST: Proceseaza înregistrarea
     @PostMapping("/inregistrare")
     public String inregistreazaUtilizator(
             @ModelAttribute("utilizatorNou") Utilizator utilizatorNou,
@@ -39,24 +39,22 @@ public class UtilizatorController {
             return "inregistrare";
         }
 
-        // 1. Setează Rolul implicit
+        // 1. Seteaza Rolul implicit
         utilizatorNou.setRolul("ROLE_USER");
 
-        // 2. Criptează Parola cu BCrypt
+        // 2. Cripteaza Parola cu BCrypt
         String parolaCriptata = passwordEncoder.encode(parolaRaw);
         utilizatorNou.setParola(parolaCriptata);
 
-        // 3. Setează numele (dacă a fost omis)
+        // 3. Seteaza numele (dacă a fost omis)
         if (utilizatorNou.getNume() == null || utilizatorNou.getNume().isEmpty()) {
             utilizatorNou.setNume(utilizatorNou.getUtilizator());
         }
 
-        // 4. Salvează utilizatorul (Acum este activ implicit)
+        // 4. Salveaza utilizatorul
         utilizatorService.saveUtilizator(utilizatorNou);
 
-        // Redirecționează la login (fără mesaj de așteptare)
+        // Redirecționeaza la login (fara mesaj de așteptare)
         return "redirect:/login?registered";
     }
-
-    // Endpoint-ul de activare /admin/activeaza este ELIMINAT
 }

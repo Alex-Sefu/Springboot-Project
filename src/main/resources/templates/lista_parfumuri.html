@@ -76,7 +76,6 @@
             <span th:text="'Bine ai venit, ' + ${numeUtilizator}" class="me-3">Bine ai venit!</span>
 
             <form th:action="@{/logout}" method="post" class="d-inline">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <button type="submit" class="btn btn-sm btn-custom">Logout</button>
             </form>
         </div>
@@ -167,7 +166,6 @@
                     <a th:href="@{/parfumuri/editeaza/{id}(id=${parfum.idParfum})}" class="action-link">Editează</a>
 
                     <form th:action="@{/parfumuri/sterge/{id}(id=${parfum.idParfum})}" method="post" class="action-form">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <button type="submit" onclick="return confirm('Sunteți sigur că doriți să ștergeți parfumul?')" class="action-link">Șterge</button>
                     </form>
                 </td>

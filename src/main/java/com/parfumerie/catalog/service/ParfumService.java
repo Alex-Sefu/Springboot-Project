@@ -65,11 +65,16 @@ public class ParfumService {
         return parfumRepository.save(parfumExistent);
     }
 
-    public Parfum getParfumById(Long id) { return parfumRepository.findById(id).orElse(null); }
-    public void deleteParfum(Long id) { parfumRepository.deleteById(id); }
+    public Parfum getParfumById(Long id) {
+        return parfumRepository.findById(id).orElse(null);
+    }
+
+    public void deleteParfum(Long id) {
+        parfumRepository.deleteById(id);
+    }
 
 
-    // Metoda de filtrare dinamică (LIKE pentru text, EQUAL pentru select)
+    // Metoda de filtrare dinamica (LIKE pentru text, EQUAL pentru select)
     public List<Parfum> filtreazaParfumuri(String brand, String creator, String tipParfum) {
 
         Specification<Parfum> finalSpec = null;
@@ -106,5 +111,9 @@ public class ParfumService {
         }
 
         return parfumRepository.findAll(finalSpec);
+    }
+
+    public List<Parfum> getAllParfumes() {
+        return parfumRepository.findAll();
     }
 }

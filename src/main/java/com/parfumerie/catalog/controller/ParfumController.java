@@ -19,7 +19,7 @@ public class ParfumController {
     @Autowired
     private ParfumService parfumService;
 
-    // --- 1. Afișare Catalog și Filtrare (READ) ---
+    // --- 1. Afisare Catalog si Filtrare (READ) ---
 
     @GetMapping("/parfumuri")
     public String listaParfumuri(
@@ -32,7 +32,7 @@ public class ParfumController {
 
         List<Parfum> listaFiltrata = parfumService.filtreazaParfumuri(brand, creator, tipParfum);
 
-        // Construcția Mesajului Dinamic
+        // Constructia Mesajului Dinamic
         List<String> criteriiAplicabile = new ArrayList<>();
 
         if (brand != null && !brand.isEmpty()) {
