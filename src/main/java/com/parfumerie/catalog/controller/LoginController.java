@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@Deprecated
 public class LoginController {
 
     // Gestioneaza afisarea paginii de login (URL-ul specificat în SecurityConfig)

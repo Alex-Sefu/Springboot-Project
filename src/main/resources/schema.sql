@@ -19,5 +19,6 @@ CREATE TABLE IF NOT EXISTS parfumuri (
                            note_baza TEXT,
                            pret DOUBLE NOT NULL,
                            stoc INT,
+                           image_url VARCHAR(500),
                            FOREIGN KEY (id_utilizator) REFERENCES utilizatori(id_utilizator)
 );

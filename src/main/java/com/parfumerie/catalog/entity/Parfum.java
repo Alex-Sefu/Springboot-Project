@@ -1,6 +1,7 @@
 package com.parfumerie.catalog.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -21,15 +22,20 @@ public class Parfum {
     private Long idUtilizator; // id-ul utilizatorului care a adaugat parfumul
 
     @Column(name = "nume_parfum", nullable = false)
+    @NotBlank(message = "Numele parfumului este obligatoriu")
+    @Size(max = 200, message = "Numele parfumului nu poate depăși 200 de caractere")
     private String numeParfum;
 
     @Column(name = "brand", nullable = false)
+    @NotBlank(message = "Brand-ul este obligatoriu")
     private String brand;
 
     @Column(name = "creator")
     private String creator;
 
     @Column(name = "anul_lansarii")
+    @Min(value = 1900, message = "Anul lansării trebuie să fie după 1900")
+    @Max(value = 2030, message = "Anul lansării nu poate fi în viitor")
     private Integer anulLansarii; // anul_fabricatiei
 
     @Column(name = "tip_parfum")
@@ -42,9 +48,13 @@ public class Parfum {
     private String noteBaza;
 
     @Column(name = "pret", nullable = false)
+    @NotNull(message = "Prețul este obligatoriu")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Prețul trebuie să fie mai mare decât 0")
     private Double pret; // pretul
 
     @Column(name = "stoc")
+    @Min(value = 0, message = "Stocul nu poate fi negativ")
     private Integer stoc;
 
-}
+    @Column(name = "image_url")
+    private String imageUrl;

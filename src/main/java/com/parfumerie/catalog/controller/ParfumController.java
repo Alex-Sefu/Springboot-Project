@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@Deprecated
 public class ParfumController {
 
     @Autowired

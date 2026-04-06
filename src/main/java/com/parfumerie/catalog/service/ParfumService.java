@@ -3,10 +3,13 @@ package com.parfumerie.catalog.service;
 import com.parfumerie.catalog.entity.Parfum;
 import com.parfumerie.catalog.repository.ParfumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ParfumService {
@@ -115,5 +118,29 @@ public class ParfumService {
 
     public List<Parfum> getAllParfumes() {
         return parfumRepository.findAll();
+    }
+
+    public Page<Parfum> findAll(Pageable pageable) {
+        return parfumRepository.findAll(pageable);
+    }
+
+    public Page<Parfum> findByBrandAndCreator(String brand, String creator, Pageable pageable) {
+        return parfumRepository.findByBrandContainingIgnoreCaseAndCreatorContainingIgnoreCase(brand, creator, pageable);
+    }
+
+    public List<Parfum> getParfumuriSimilare(Long id) {
+        Parfum parfum = getParfumById(id);
+        if (parfum == null) {
+            return List.of();
+        }
+
+        // Găsește parfumuri din același brand sau cu aceleași note de vârf, excluzând parfumul curent
+        return parfumRepository.findAll().stream()
+                .filter(p -> !p.getIdParfum().equals(id))
+                .filter(p -> p.getBrand().equalsIgnoreCase(parfum.getBrand()) ||
+                           (p.getNoteVarf() != null && parfum.getNoteVarf() != null &&
+                            p.getNoteVarf().toLowerCase().contains(parfum.getNoteVarf().toLowerCase().split(",")[0].trim())))
+                .limit(4)
+                .collect(Collectors.toList());
     }
 }

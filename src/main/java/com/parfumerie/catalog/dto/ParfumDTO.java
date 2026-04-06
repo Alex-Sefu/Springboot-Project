@@ -13,6 +13,7 @@ public class ParfumDTO {
     private String noteBaza;
     private Double pret;
     private Integer stoc;
+    private String imageUrl;
 
     public Long getIdParfum() {
         return idParfum;
@@ -100,6 +101,14 @@ public class ParfumDTO {
 
     public void setStoc(Integer stoc) {
         this.stoc = stoc;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 
